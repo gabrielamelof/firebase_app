@@ -1,3 +1,6 @@
+import 'package:badapp/delete.dart';
+import 'package:badapp/post.dart';
+import 'package:badapp/put.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -55,11 +58,37 @@ class _TelaGetState extends State<TelaGet> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
-        body: Column(
+        appBar: AppBar(title: Text(
+          "Tela Get", 
+          style: TextStyle(color: Colors.white)),
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(255, 40, 104, 177),),
+          
+        body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("$temperature")
+            Text("$temperature"),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PostPage()
+              ));
+            }, style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 40, 104, 177),
+                foregroundColor: Colors.white,), child: Text("Ir para a página Post")),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DeletePage()
+              ));
+            }, style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 40, 104, 177),
+                foregroundColor: Colors.white,), child: Text("Ir para a página Delete")),
+             ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PutPage()
+              ));
+            }, style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 40, 104, 177),
+                foregroundColor: Colors.white,), child: Text("Ir para a página PUT"))
           ],
+        ),
         ),
       ),
 
